@@ -7,7 +7,7 @@ class Producto extends Conectar
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "SELECT * FROM tm_productos WHERE est = 1";
+        $sql = "SELECT * FROM tm_producto WHERE est = 1";
         $sql = $conectar->prepare($sql);
         $sql->execute();
         return $resultado = $sql->fetchAll();
@@ -18,7 +18,7 @@ class Producto extends Conectar
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "SELECT * FROM tm_productos WHERE prod_id = ?";
+        $sql = "SELECT * FROM tm_producto WHERE prod_id = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $prod_id);
         $sql->execute();
@@ -30,7 +30,7 @@ class Producto extends Conectar
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "UPDATE tm_producto 
+        $sql = "UPDATE tm_producto
             SET 
                 est = 0, 
                 fech_elim = now()
@@ -47,7 +47,7 @@ class Producto extends Conectar
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "INSERT INTO tm_producto (prod_id, prod_nom, fech_crea, fech_modi, fech_elim, est) VALUES (NULL, ?, now(), NULL, NULL, 1)";
+        $sql = "INSERT INTO tm_producto(prod_id, prod_nom, fech_crea, fech_modi, fech_elim, est) VALUES (NULL, ?, now(), NULL, NULL, 1)";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $prod_nom);
         $sql->execute();
@@ -59,7 +59,7 @@ class Producto extends Conectar
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "UPDATE tm_producto 
+        $sql = "UPDATE tm_producto
             SET 
                 prod_nom = ?, 
                 fech_mod = now()
